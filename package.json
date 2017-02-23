@@ -9,7 +9,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.15.3",
+    "muse-ui": "^2.0.0-rc.5",
     "vue": "^2.1.10",
+    "vue-axios": "^1.2.2",
     "vue-router": "^2.2.0"
   },
   "devDependencies": {

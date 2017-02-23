@@ -1,17 +1,14 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-
-  </div>
+  <!--榜单分类列表-->
+  <div>绑定列表</div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'bangList',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+
     }
   }
 }
