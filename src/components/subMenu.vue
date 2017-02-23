@@ -2,18 +2,31 @@
   <!--顶部菜单-->
   <nav class="menu">
     <div class="sub-menu">
-      <router-link :to="{name:'index'}">
-        <mu-flat-button label="推荐" />
+      <div class="sub-menu-link">
+        <router-link :to="{name:'index'}" tag="div">
+          <mu-flat-button label="推荐" />
 
-      </router-link>
-      <router-link :to="{name:'bangList'}">
-        <mu-flat-button label="排行榜" />
+        </router-link>
+      </div>
+      <div class="sub-menu-link">
+        <router-link :to="{name:'bangList'}"tag="div">
+          <mu-flat-button label="虾米榜单" />
 
-      </router-link>
-      <router-link :to="{name:'searchList'}">
-        <mu-flat-button label="搜索"  secondary/>
+        </router-link>
+      </div>
+      <div class="sub-menu-link">
+        <router-link :to="{name:'aliBangList'}" class="sub-menu-link" tag="div">
+          <mu-flat-button label="阿里榜单" />
 
-      </router-link>
+        </router-link>
+      </div>
+      <div class="sub-menu-link">
+        <router-link :to="{name:'searchList'}" tag="div">
+          <mu-flat-button label="搜索" />
+
+        </router-link>
+      </div>
+
     </div>
   </nav>
 

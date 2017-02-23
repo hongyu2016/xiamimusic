@@ -1,16 +1,66 @@
 <template>
   <!--榜单分类列表-->
-  <div>绑定列表</div>
+  <div>
+      <mu-list>
+        <template v-for="titleText in titleTexts">
+          <mu-list-item v-bind:title="titleText.title">
+            <mu-icon slot="right" value="arrow_right"/>
+          </mu-list-item>
+        </template>
+      </mu-list>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'bangList',
   data () {
+      const xiamiBang=[
+          {typeId:101,title:'虾米音乐榜'},
+          {typeId:102,title:'虾米新歌榜'},
+          {typeId:103,title:'虾米原创榜'},
+          {typeId:104,title:'大虾推荐榜'},
+
+          {typeId:1,title:'Hito中文榜'},
+          {typeId:2,title:'香港劲歌金榜'},
+          {typeId:3,title:'英国UK单曲榜'},
+          {typeId:4,title:'Billboard单曲榜'},
+          {typeId:5,title:'Oricon公信单曲榜'},
+          {typeId:6,title:'M-net综合数据周榜'},
+      ];
+      const aliBang=[
+          {song_type:'real-time',title:'实时排行榜'},
+          {song_type:'week',title:'周榜'},
+          {song_type:'yaer',title:'年榜'}
+      ];
     return {
+        xiamiBang:xiamiBang,
+        aliBang:aliBang,
+        titleTexts:[]
+    }
+  },
+    watch:{
+      //路由切换时进行判断
+      '$route'(to,from){
+          if(to.name=='bangList'){
+              this.titleTexts=this.xiamiBang;
+          }
+          else{
+              this.titleTexts=this.aliBang;
+          }
+      }
+    },
+    mounted(){
+      //页面初始化判断路由
+      if(this.$route.name=='bangList'){
+          this.titleTexts=this.xiamiBang;
+      }
+      else{
+          this.titleTexts=this.aliBang;
+      }
 
     }
-  }
 }
 </script>
 
