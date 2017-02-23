@@ -2,7 +2,7 @@
   <!--榜单分类列表-->
   <div>
       <mu-list>
-        <router-link v-for="titleText in titleTexts" :to="{name:'xDetailList',params:{typeId:titleText.typeId}}">
+        <router-link v-for="titleText in titleTexts" :to="{name:'xDetailList',params:{type:1,typeId:titleText.typeId}}">
 
           <mu-list-item v-bind:title="titleText.title">
             <mu-icon slot="right" value="arrow_right"/>

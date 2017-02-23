@@ -36,13 +36,13 @@ export default new Router({
       },
       //虾米榜单歌曲列表
       {
-          path: '/bangList/xDetailList/:typeId',
+          path: '/bangList/type/:type/xDetailList/:typeId',
           name: 'xDetailList',
           component: bangDetailList
       },
       //阿里榜单歌曲列表
       {
-          path: '/aliBangList/aliDetailList/:song_type',
+          path: '/aliBangList/type/:type/aliDetailList/:song_type',
           name: 'aliDetailList',
           component: bangDetailList
       },

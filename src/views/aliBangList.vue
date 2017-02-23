@@ -2,7 +2,7 @@
   <!--榜单分类列表-->
   <div>
       <mu-list>
-        <router-link v-for="titleText in titleTexts" :to="{name:'aliDetailList',params:{song_type:titleText.song_type}}">
+        <router-link v-for="titleText in titleTexts" :to="{name:'aliDetailList',params:{type:2,song_type:titleText.song_type}}">
 
           <mu-list-item v-bind:title="titleText.title">
             <mu-icon slot="right" value="arrow_right"/>
