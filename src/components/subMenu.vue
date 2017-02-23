@@ -45,7 +45,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .menu{width: 100%;position: relative;margin-bottom: 10px}
+  .menu{width: 100%;position: fixed;top:0;margin-bottom: 0;z-index: 10}
   .sub-menu{
     width: 100%;
     display: -webkit-box;

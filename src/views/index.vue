@@ -5,9 +5,9 @@
 
         <mu-grid-tile v-for="item in list">
           <img src="https://museui.github.io/img/breakfast.f109829.jpg"/>
-          <span slot="title">tile.title</span>
-          <span slot="subTitle">by <b>tile.author</b></span>
-          <mu-icon-button icon="star_border" slot="action"/>
+          <span slot="title">歌曲标题</span>
+          <span slot="subTitle">by <b>歌手名称</b></span>
+          <!--<mu-icon-button icon="star_border" slot="action"/>-->
         </mu-grid-tile>
 
       <mu-infinite-scroll  :loading="loading" @load="loadMore"/>

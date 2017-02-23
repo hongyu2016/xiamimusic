@@ -25,6 +25,7 @@ export default {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 30px;
 }
 .my-active .mu-flat-button-label{color: #ff4081;}
 </style>
