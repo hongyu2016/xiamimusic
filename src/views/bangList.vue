@@ -2,11 +2,13 @@
   <!--榜单分类列表-->
   <div>
       <mu-list>
-        <template v-for="titleText in titleTexts">
+        <router-link v-for="titleText in titleTexts" :to="{name:'xDetailList',params:{typeId:titleText.typeId}}">
+
           <mu-list-item v-bind:title="titleText.title">
             <mu-icon slot="right" value="arrow_right"/>
           </mu-list-item>
-        </template>
+
+        </router-link>
       </mu-list>
   </div>
 </template>
@@ -29,14 +31,9 @@ export default {
           {typeId:5,title:'Oricon公信单曲榜'},
           {typeId:6,title:'M-net综合数据周榜'},
       ];
-      const aliBang=[
-          {song_type:'real-time',title:'实时排行榜'},
-          {song_type:'week',title:'周榜'},
-          {song_type:'yaer',title:'年榜'}
-      ];
+
     return {
         xiamiBang:xiamiBang,
-        aliBang:aliBang,
         titleTexts:[]
     }
   },
@@ -46,9 +43,6 @@ export default {
           if(to.name=='bangList'){
               this.titleTexts=this.xiamiBang;
           }
-          else{
-              this.titleTexts=this.aliBang;
-          }
       }
     },
     mounted(){
@@ -56,10 +50,6 @@ export default {
       if(this.$route.name=='bangList'){
           this.titleTexts=this.xiamiBang;
       }
-      else{
-          this.titleTexts=this.aliBang;
-      }
-
     }
 }
 </script>
