@@ -16,7 +16,6 @@ export default {
   name: 'searchList',
   data () {
     return {
-
     }
   }
 }

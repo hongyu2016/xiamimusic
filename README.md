@@ -1,6 +1,6 @@
 # xiamimusic
 
-> xiami
+> 腾讯音乐接口
 
 ## Build Setup
 
