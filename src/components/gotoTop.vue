@@ -16,7 +16,7 @@
     }
 </script>
 <style scoped>
-    #goto-top{position: fixed;right: 10px;bottom: 10px;z-index: 10;background-color: #cc8e06;
+    #goto-top{position: fixed;right: 10px;bottom: 65px;z-index: 10;background-color: #cc8e06;
         padding: 5px;border-radius: 50%;width: 30px;height: 30px;/*line-height: 15px;*/display: block;
         color: #fff;box-sizing: border-box;text-align: center;
     }

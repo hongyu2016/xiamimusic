@@ -4,13 +4,15 @@
     <div class="main">
       <router-view></router-view>
     </div>
+    <playBar></playBar>
     <gotoTop v-show="showTop"></gotoTop>
   </div>
 </template>
 
 <script>
-  import subMenu from 'components/subMenu.vue';
-  import gotoTop from 'components/gotoTop.vue'
+  import subMenu from 'components/subMenu.vue' //菜单按钮
+  import gotoTop from 'components/gotoTop.vue' // 回到顶部
+  import playBar from 'components/playBar.vue' //播放条
 export default {
   name: 'app',
     data(){
@@ -33,7 +35,7 @@ export default {
     mounted(){
         window.addEventListener('scroll', this.needToTop);  //滚动事件监听
     },
-    components:{subMenu,gotoTop}
+    components:{subMenu,gotoTop,playBar}
 }
 </script>
 
