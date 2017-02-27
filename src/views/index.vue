@@ -21,6 +21,7 @@
 <script>
     import api from '../api/index'
     import loading from '../components/loading.vue'
+
 export default {
   name: 'index',
   data () {
@@ -43,7 +44,7 @@ export default {
 
             this.$http.get(api.getPlayListByWhere(26,0)).then(function(res){
                 _this.list.push( res.data.showapi_res_body.pagebean.songlist);
-                console.log(_this.list)
+
                 _this.loading = false
             })
         },
