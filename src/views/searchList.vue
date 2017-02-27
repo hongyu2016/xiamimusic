@@ -1,6 +1,14 @@
 <template>
   <!--搜索列表-->
-  <div>搜索list吧</div>
+  <div class="search-box">
+      <div class="search-head">
+        <mu-text-field hintText="请输入歌曲或歌手"/>
+        <mu-icon value="search" :size="30" color="#5d5d5d" class="search-btn"/>
+      </div>
+      <div class="search-list">
+
+      </div>
+  </div>
 </template>
 
 <script>
@@ -33,4 +41,7 @@ li {
 a {
   color: #42b983;
 }
+  .search-box{padding: 0 16px;margin-top: -10px;position: relative}
+  .search-head{position: relative}
+  .search-btn{position: absolute;right:0;top:5px}
 </style>

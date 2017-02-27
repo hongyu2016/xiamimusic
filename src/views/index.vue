@@ -1,7 +1,8 @@
 <template>
   <!--首页-->
   <div class="gridlist-container">
-    <loading v-show="loading"></loading>
+    <!--<loading v-show="loading"></loading>-->
+    <mu-circular-progress :size="30" v-show="loading"/>
     <mu-grid-list class="gridlist" v-for="songList in list">
         <mu-grid-tile v-for="item in songList">
 
@@ -20,8 +21,7 @@
 
 <script>
     import api from '../api/index'
-    import loading from '../components/loading.vue'
-
+    /*import loading from '../components/loading.vue'*/
 export default {
   name: 'index',
   data () {
@@ -53,7 +53,7 @@ export default {
            this.get()
         }*/
     },
-    components:{loading}
+    /*components:{loading}*/
 }
 </script>
 

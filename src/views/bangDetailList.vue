@@ -1,48 +1,38 @@
 <template>
   <!--榜单详情列表-->
-  <mu-list>
+  <div class="list">
+    <mu-circular-progress :size="30" v-show="loading"/>
+    <mu-list v-for="songList in list">
 
-
-    <mu-list-item title="歌曲标题">
-      <mu-avatar src="" slot="leftAvatar"/>
-      <span slot="describe">
-        <span style="color: rgba(0, 0, 0, .87)">Myron Liu -</span> 歌曲名称
+      <mu-list-item :title="item.singername" v-for="item in songList">
+        <mu-avatar :src="item.albumpic_big" slot="leftAvatar"/>
+        <span slot="describe">
+        <span style="color: rgba(0, 0, 0, .87)">by： -</span> {{item.singername}}
       </span>
-      <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-        <mu-menu-item title="专辑" />
-        <mu-menu-item title="标记" />
-      </mu-icon-menu>
-    </mu-list-item>
-    <mu-divider inset/>
-    <mu-list-item title="歌曲标题">
-      <mu-avatar src="" slot="leftAvatar"/>
-      <span slot="describe">
-        <span style="color: rgba(0, 0, 0, .87)">Myron Liu -</span> 歌曲名称
-      </span>
-      <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-        <mu-menu-item title="专辑" />
-        <mu-menu-item title="标记" />
-      </mu-icon-menu>
-    </mu-list-item>
-    <mu-divider inset/>
+        <!--<mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
+          <mu-menu-item title="专辑" />
+          <mu-menu-item title="标记" />
+        </mu-icon-menu>-->
+      </mu-list-item>
+      <mu-divider inset/>
 
       <!--<mu-infinite-scroll  :loading="loading" @load="loadMore"/>-->
 
+    </mu-list>
+  </div>
 
-  </mu-list>
 
 </template>
 
 <script>
   import api from '../api/index'
+  /*import loading from '../components/loading.vue'*/
 export default {
   name: 'hello',
   data () {
       return {
           list:[],
-          num: 20,
           loading: false,
-          scroller: null
       }
   },
     created () {
@@ -53,31 +43,20 @@ export default {
     },
     methods: {
         get(){
+            const _this=this;
             this.loading = true
-           // if(this.$route.params.type==1){
-                //虾米
-                this.$http.get(api.getPlayListByWhere(this.$route.params.topid,0)).then((res) => {
-                    /*var total = res.data.total
-                    var list = (res.data.list)
-                    for (let i = 0; i < list.length; i++) {
-                        this.list.push(list[i])
-                    }*/
-
-                    //if (this.offset > total) this.offset = total
-                    this.loading = false
-                })
-            //}else{
-                //阿里
-            //}
-
-
+            this.$http.get(api.getPlayListByWhere(this.$route.params.topid,0)).then((res) => {
+                _this.list.push( res.data.showapi_res_body.pagebean.songlist);
+                _this.loading = false
+            })
 
         },
         /*loadMore () {
 
             this.get()
         }*/
-    }
+    },
+   /* components:{loading}*/
 }
 </script>
 
@@ -100,4 +79,11 @@ li {
 a {
   color: #42b983;
 }
+  .list .mu-circular-progress{
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+  }
 </style>
