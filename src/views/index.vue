@@ -1,31 +1,33 @@
 <template>
   <!--首页-->
   <div class="gridlist-container">
-    <mu-grid-list class="gridlist">
+    <loading v-show="loading"></loading>
+    <mu-grid-list class="gridlist" v-for="songList in list">
+        <mu-grid-tile v-for="item in songList">
 
-        <mu-grid-tile v-for="item in list">
-          <img src="https://museui.github.io/img/breakfast.f109829.jpg"/>
-          <span slot="title">歌曲标题</span>
-          <span slot="subTitle">by <b>歌手名称</b></span>
-          <!--<mu-icon-button icon="star_border" slot="action"/>-->
+            <img :src="item.albumpic_big"/>
+            <span slot="title">{{item.songname}}</span>
+            <span slot="subTitle">by： <b>{{item.singername}}</b></span>
+            <!--<mu-icon-button icon="star_border" slot="action"/>-->
+
         </mu-grid-tile>
 
-      <mu-infinite-scroll  :loading="loading" @load="loadMore"/>
+      <!--<mu-infinite-scroll  :loading="loading" @load="loadMore"/>-->
 
     </mu-grid-list>
   </div>
 </template>
 
 <script>
+    import api from '../api/index'
+    import loading from '../components/loading.vue'
 export default {
   name: 'index',
   data () {
-
       return {
           list:[],
-          num: 20,
           loading: false,
-          scroller: null
+          //scroller: null
       }
   },
     created () {
@@ -37,19 +39,20 @@ export default {
     methods: {
         get(){
             this.loading = true
-            setTimeout(() => {
-                for (let i = this.num; i < this.num + 10; i++) {
-                    this.list.push('item' + (i + 1))
-                }
-                this.num += 10
-                this.loading = false
-            }, 2000)
+            const _this=this;
+
+            this.$http.get(api.getPlayListByWhere(26,0)).then(function(res){
+                _this.list.push( res.data.showapi_res_body.pagebean.songlist);
+                console.log(_this.list)
+                _this.loading = false
+            })
         },
-        loadMore () {
+        /*loadMore () {
 
            this.get()
-        }
-    }
+        }*/
+    },
+    components:{loading}
 }
 </script>
 

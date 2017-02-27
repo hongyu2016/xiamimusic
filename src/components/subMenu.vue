@@ -10,16 +10,16 @@
       </div>
       <div class="sub-menu-link">
         <router-link :to="{name:'bangList'}" tag="div">
-          <mu-flat-button label="虾米榜单" />
+          <mu-flat-button label="热门榜单" />
 
         </router-link>
       </div>
-      <div class="sub-menu-link">
+      <!--<div class="sub-menu-link">
         <router-link :to="{name:'aliBangList'}" tag="div">
           <mu-flat-button label="阿里榜单" />
 
         </router-link>
-      </div>
+      </div>-->
       <div class="sub-menu-link">
         <router-link :to="{name:'searchList'}" tag="div">
           <mu-flat-button label="搜索" />

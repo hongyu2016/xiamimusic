@@ -25,7 +25,8 @@
       </mu-icon-menu>
     </mu-list-item>
     <mu-divider inset/>
-      <mu-infinite-scroll  :loading="loading" @load="loadMore"/>
+
+      <!--<mu-infinite-scroll  :loading="loading" @load="loadMore"/>-->
 
 
   </mu-list>
@@ -53,9 +54,9 @@ export default {
     methods: {
         get(){
             this.loading = true
-            if(this.$route.params.type==1){
+           // if(this.$route.params.type==1){
                 //虾米
-                this.$http.get(api.getPlayListByWhere(this.$route.params.typeId,0)).then((res) => {
+                this.$http.get(api.getPlayListByWhere(this.$route.params.topid,0)).then((res) => {
                     /*var total = res.data.total
                     var list = (res.data.list)
                     for (let i = 0; i < list.length; i++) {
@@ -65,17 +66,17 @@ export default {
                     //if (this.offset > total) this.offset = total
                     this.loading = false
                 })
-            }else{
+            //}else{
                 //阿里
-            }
+            //}
 
 
 
         },
-        loadMore () {
+        /*loadMore () {
 
             this.get()
-        }
+        }*/
     }
 }
 </script>
