@@ -3,27 +3,53 @@
     <div id="play-bar" @click='' v-show="isDisplay">
         <mu-row gutter>
             <mu-col width="20" tablet="30" desktop="30">
-                <img class="play-ing-pic" src="http://i.gtimg.cn/music/photo/mid_album_300/f/z/003Wm3qI0ik5fz.jpg"/>
+                <img class="play-ing-pic" :src="playerInfo.singerPic"/>
             </mu-col>
             <mu-col width="60" tablet="50" desktop="50">
-                <p class="sing-name">夏夜星空海 (《那片星空那片海》电视剧主题曲)</p>
-                <p class="sing-singer">夏夜星空海</p>
+                <p class="sing-name">{{playerInfo.singName}}</p>
+                <p class="sing-singer">{{playerInfo.singerName}}</p>
             </mu-col>
             <mu-col width="20" tablet="20" desktop="20">
                 <div>
-                    <span class="play-bar-icon icon-play" style="display: none"></span>
-                    <span class="play-bar-icon icon-pause" ></span>
-                    <span class="play-bar-icon icon-step-forward"></span>
+                    <span class="play-bar-icon" :class="getPlayBtnState" @click="playType"></span>
+                    <!--<span class="play-bar-icon icon-pause" ></span>-->
+                    <span class="play-bar-icon icon-step-forward" @click="nextPlay"></span>
                 </div>
             </mu-col>
+            <audio src="" id="audio"></audio>
         </mu-row>
     </div>
 </template>
 <script>
+    import tools from '../../static/js/playTools'
+    import {mapGetters} from 'vuex'
     export default{
         name:'gotoTop',
-        methods:{
+        computed:{
+            ...mapGetters({
+                playerInfo:'GET_PLAYER_INFO',
+                isDisplay:'GET_PLAYER_ISDISPLAY',
+                isPlay:'GET_PLAYER_PLAYSTATE'
+            }),
+            getPlayBtnState(){
+                return this.isPlay?'icon-pause':'icon-play';
+            }
+        },
+        data(){
+            return {
 
+            }
+        },
+        methods:{
+            playType (){
+                tools.playState();
+            },
+            nextPlay (){
+                tools.nextPlay();
+            }
+        },
+        mounted(){
+            tools.isEnded();
         }
     }
 </script>

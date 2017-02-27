@@ -4,9 +4,9 @@
     <!--<loading v-show="loading"></loading>-->
     <mu-circular-progress :size="30" v-show="loading"/>
     <mu-grid-list class="gridlist" v-for="songList in list">
-        <mu-grid-tile v-for="item in songList">
+        <mu-grid-tile v-for="(item,index) in songList" @click="playMuisc(index)">
 
-            <img :src="item.albumpic_big"/>
+            <img :src="item.albumpic_big" />
             <span slot="title">{{item.songname}}</span>
             <span slot="subTitle">by： <b>{{item.singername}}</b></span>
             <!--<mu-icon-button icon="star_border" slot="action"/>-->
@@ -22,10 +22,13 @@
 <script>
     import api from '../api/index'
     /*import loading from '../components/loading.vue'*/
+    import tools from '../../static/js/playTools'
+    import {mapActions} from 'vuex'
 export default {
   name: 'index',
   data () {
       return {
+          isPush:true,
           list:[],
           loading: false,
           //scroller: null
@@ -52,6 +55,16 @@ export default {
 
            this.get()
         }*/
+        playMuisc (index) {
+            if(this.isPush){
+                this.setSongiList(this.list);
+                this.isPush = false;
+            };
+            tools.playMusic(index);
+        },
+        ...mapActions({
+            setSongiList:'SONG_LIST_ACTION'
+        })
     },
     /*components:{loading}*/
 }
