@@ -54,10 +54,6 @@ export default {
             })
 
         },
-        /*loadMore () {
-
-            this.get()
-        }*/
         playMuisc (index) {
             if(this.isPush){
                 this.setSongiList(this.songList);

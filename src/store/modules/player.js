@@ -1,7 +1,7 @@
 export default {
     state:{
         songList:[], //歌曲列表
-        searchList:[],  //搜索歌曲列表
+        searchList:[],  //搜索歌曲列表 -存储搜索列表用
         isDisplay:false,  //显示播放条
         nowIndex:0,   //当前顺序
         singerPic:'',  //歌曲图片
@@ -13,7 +13,7 @@ export default {
         songid:'', //歌曲id
         nowPages:0,  //当前页码
         allPages:0, //总页数
-        searchKey:'' //搜索词
+        searchKey:'' //搜索词-存储搜索列表用
     },
     mutations:{
         SET_PLAYER_TIME (state, data) {
@@ -42,7 +42,7 @@ export default {
         }
     },
     getters:{
-        GET_PLAYER_INFO: state => {
+        GET_PLAYER_INFO: (state) => {
             return {
                 singerPic: state.singerPic,
                 singerName: state.singerName,
@@ -52,16 +52,16 @@ export default {
                 songid:state.songid
             }
         },
-        GET_SONG_LIST: state => {
+        GET_SONG_LIST: (state) => {
             return state.songList
         },
-        GET_PLAYER_ISDISPLAY : state => {
+        GET_PLAYER_ISDISPLAY : (state) => {
             return state.isDisplay
         },
-        GET_PLAYER_PLAYSTATE: state => {
+        GET_PLAYER_PLAYSTATE: (state) => {
             return state.playState
         },
-        GET_PLAYER_TIME : state => {
+        GET_PLAYER_TIME : (state) => {
             return {
                 songTime:state.songTime,
                 songNowTime:state.songNowTime

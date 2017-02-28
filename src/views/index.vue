@@ -30,7 +30,6 @@ export default {
           isPush:true,
           songList:[],
           loading: false,
-          //scroller: null
       }
   },
     created () {
@@ -49,10 +48,6 @@ export default {
                 _this.loading = false
             })
         },
-        /*loadMore () {
-
-           this.get()
-        }*/
         playMuisc (index) {
             if(this.isPush){
                 this.setSongiList(this.songList);

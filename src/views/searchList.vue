@@ -79,7 +79,6 @@ export default {
            }
         },
         searchMusic(){
-            let _this=this;
             if (this.searchTxt.length==0){
                 //搜索框不能为空
                 return false;
