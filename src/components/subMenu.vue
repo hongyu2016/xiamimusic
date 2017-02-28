@@ -2,15 +2,15 @@
   <!--顶部菜单-->
   <nav class="menu">
     <div class="sub-menu">
-      <div class="sub-menu-link">
+      <div class="sub-menu-link padding-5">
         <router-link :to="{name:'index'}" tag="div">
-          <mu-flat-button label="推荐" />
+          <mu-flat-button label="推荐"/>
 
         </router-link>
       </div>
-      <div class="sub-menu-link">
+      <div class="sub-menu-link padding-5">
         <router-link :to="{name:'bangList'}" tag="div">
-          <mu-flat-button label="热门榜单" />
+          <mu-flat-button label="热门榜单"/>
 
         </router-link>
       </div>
@@ -20,9 +20,9 @@
 
         </router-link>
       </div>-->
-      <div class="sub-menu-link">
+      <div class="sub-menu-link padding-5">
         <router-link :to="{name:'searchList'}" tag="div">
-          <mu-flat-button label="搜索" />
+          <mu-flat-button label="搜索"/>
 
         </router-link>
       </div>
@@ -52,10 +52,12 @@ export default {
     display: -moz-box;
     display: -ms-box;
   }
-  .sub-menu{background-color: #eaeaea}
+  .sub-menu{background-color: #eaeaea;}
   .sub-menu .sub-menu-link {
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     display: block;
+    text-align: center;
   }
+  .padding-5{padding: 7px 0}
 </style>
