@@ -4,7 +4,7 @@
     <mu-circular-progress :size="30" v-show="loading"/>
     <mu-list>
 
-      <mu-list-item :title="item.singername" v-for="item in songList">
+      <mu-list-item :title="item.songname" v-for="(item,index) in songList" @click="playMuisc(index)">
         <mu-avatar :src="item.albumpic_big" slot="leftAvatar"/>
         <span slot="describe">
         <span style="color: rgba(0, 0, 0, .87)">by： -</span> {{item.singername}}
@@ -26,11 +26,14 @@
 
 <script>
   import api from '../api/index'
+  import tools from '../../static/js/playTools'
+  import {mapActions} from 'vuex'
   /*import loading from '../components/loading.vue'*/
 export default {
   name: 'hello',
   data () {
       return {
+          isPush:true,
           songList:[],
           loading: false,
       }
@@ -55,6 +58,16 @@ export default {
 
             this.get()
         }*/
+        playMuisc (index) {
+            if(this.isPush){
+                this.setSongiList(this.songList);
+                this.isPush = false;
+            };
+            tools.playMusic(index);
+        },
+        ...mapActions({
+            setSongiList:'SONG_LIST_ACTION'
+        })
     },
    /* components:{loading}*/
 }

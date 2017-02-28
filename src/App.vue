@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <subMenu></subMenu>
-    <div class="main">
+    <div class="main" id="main" :class="setPadding_b">
       <router-view></router-view>
     </div>
     <playBar></playBar>
@@ -13,12 +13,22 @@
   import subMenu from 'components/subMenu.vue' //菜单按钮
   import gotoTop from 'components/gotoTop.vue' // 回到顶部
   import playBar from 'components/playBar.vue' //播放条
+  //isDisplay
+  import {mapGetters} from 'vuex'
 export default {
   name: 'app',
     data(){
       return {
           showTop:false
       }
+    },
+    computed:{
+        ...mapGetters({
+            isDisplay:'GET_PLAYER_ISDISPLAY'
+        }),
+        setPadding_b(){
+            return this.isDisplay?'padding-b':'no-padding-b';
+        }
     },
     methods:{
         needToTop(){
@@ -52,5 +62,5 @@ export default {
   padding-top: 30px;
 }
 .my-active .mu-flat-button-label{color: #ff4081;}
-
+.padding-b{padding-bottom: 65px;}
 </style>

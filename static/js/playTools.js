@@ -17,7 +17,7 @@ export default {
             songid:this.songList[index].songid,
             nowIndex: index
         });
-        console.log(this.songList)
+
         //store.dispatch('LYRIC_ACTION','');
         this.setPlay();
     },
