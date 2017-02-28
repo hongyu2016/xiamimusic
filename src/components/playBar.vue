@@ -12,10 +12,11 @@
             <mu-col width="20" tablet="20" desktop="20">
                 <div>
                     <span class="play-bar-icon" :class="getPlayBtnState" @click="playType"></span>
-                    <!--<span class="play-bar-icon icon-pause" ></span>-->
                     <span class="play-bar-icon icon-step-forward" @click="nextPlay"></span>
                 </div>
             </mu-col>
+            <!--进度条-->
+            <mu-linear-progress mode="determinate" :value="100" id="small-progress" style="display: none" color="#ff4081"/>
             <audio src="" id="audio"></audio>
         </mu-row>
     </div>
@@ -27,9 +28,9 @@
         name:'gotoTop',
         computed:{
             ...mapGetters({
-                playerInfo:'GET_PLAYER_INFO',
-                isDisplay:'GET_PLAYER_ISDISPLAY',
-                isPlay:'GET_PLAYER_PLAYSTATE'
+                playerInfo:'GET_PLAYER_INFO', //面板信息
+                isDisplay:'GET_PLAYER_ISDISPLAY', //是否显示
+                isPlay:'GET_PLAYER_PLAYSTATE' //是否在播放
             }),
             getPlayBtnState(){
                 return this.isPlay?'icon-pause':'icon-play';
@@ -63,4 +64,6 @@
     .sing-singer{margin-top: 5px;color: #ccc;margin-bottom: 0}
     .play-bar-icon{font-size: 18px;line-height: 50px;}
     .icon-play,.icon-pause{margin-right: 5px;}
+    .row{position: relative;}
+    #small-progress{position: absolute;left: 0;bottom: 0}
 </style>

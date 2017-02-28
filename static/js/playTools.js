@@ -45,8 +45,8 @@ export default {
         this.setPlayInfo(this.nowIndex);
     },
     isEnded () {
-        let _this = this
-            //smallBar = $('#small-play-bar');
+        let _this = this,
+            smallBar = document.getElementById('small-progress'); //进度条
         this.audioEle = document.getElementById('audio');
 
 
@@ -54,30 +54,30 @@ export default {
             _this.nextPlay();
         });
 
-        //监听播放进度
+        //监听播放进度 进度条
         this.audioEle.ontimeupdate = function(event) {
 
             let scale = parseInt(_this.audioEle.currentTime)/parseInt(_this.audioEle.duration) * 100+'%',
                 nowCurrentTime = _this.audioEle.currentTime.toFixed(2);
 
             _this.getPlayerTime(_this.audioEle.duration,_this.audioEle.currentTime);
-
-            /*smallBar.width(scale);
-            _this.bigBar&&_this.bigBar.width(scale);
-            _this.bigDot&&_this.bigDot.css({
-                left:scale
-            });*/
+            smallBar.style.display='block';
+            smallBar.style.width=scale;
+            //_this.bigBar&&_this.bigBar.width(scale);
+            // _this.bigDot&&_this.bigDot.css({
+            //     left:scale
+            // });
 
             //更新歌词
-            if(_this.lyricList && _this.lyricList.length) {
+            /*if(_this.lyricList && _this.lyricList.length) {
                 for(let i = 0,len = _this.lyricList.length;i<len;i++){
                     if(i > _this.targetNumber && nowCurrentTime  > _this.lyricList[i][0] ){
                         _this.targetNumber = i;
                         store.dispatch('LYRIC_ACTION',_this.lyricList[i][1]);
                         break;
-                    };
-                };
-            };
+                    }
+                }
+            }*/
         };
     },
     getPlayerTime (time,nowTime){
