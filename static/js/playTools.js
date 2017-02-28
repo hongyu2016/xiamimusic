@@ -10,13 +10,14 @@ export default {
         this.nowIndex = index;
         this.songList = store.getters.GET_SONG_LIST;
         store.dispatch('PLAYER_ACTION',{
-            singerPic:this.songList[index].albumpic_small,
+            singerPic:this.songList[index].albumpic_big,
             singerName:this.songList[index].singername,
             singName:this.songList[index].songname,
            // singerBigPic:this.songList[index].albumpic_big,
             songid:this.songList[index].songid,
             nowIndex: index
         });
+        console.log(this.songList)
         //store.dispatch('LYRIC_ACTION','');
         this.setPlay();
     },

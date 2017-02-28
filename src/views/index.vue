@@ -3,14 +3,13 @@
   <div class="gridlist-container">
     <!--<loading v-show="loading"></loading>-->
     <mu-circular-progress :size="30" v-show="loading"/>
-    <mu-grid-list class="gridlist" v-for="songList in list">
-        <mu-grid-tile v-for="(item,index) in songList" @click="playMuisc(index)">
+    <mu-grid-list class="gridlist">
 
-            <img :src="item.albumpic_big" />
-            <span slot="title">{{item.songname}}</span>
-            <span slot="subTitle">by： <b>{{item.singername}}</b></span>
+        <mu-grid-tile v-for="(item,index) in songList">
+            <img :src="item.albumpic_big" @click="playMuisc(index)"/>
+            <span slot="title"  @click="playMuisc(index)">{{item.songname}}</span>
+            <span slot="subTitle"  @click="playMuisc(index)">by： <b>{{item.singername}}</b></span>
             <!--<mu-icon-button icon="star_border" slot="action"/>-->
-
         </mu-grid-tile>
 
       <!--<mu-infinite-scroll  :loading="loading" @load="loadMore"/>-->
@@ -29,7 +28,7 @@ export default {
   data () {
       return {
           isPush:true,
-          list:[],
+          songList:[],
           loading: false,
           //scroller: null
       }
@@ -46,8 +45,7 @@ export default {
             const _this=this;
 
             this.$http.get(api.getPlayListByWhere(26,0)).then(function(res){
-                _this.list.push( res.data.showapi_res_body.pagebean.songlist);
-
+                _this.songList= res.data.showapi_res_body.pagebean.songlist;
                 _this.loading = false
             })
         },
@@ -57,7 +55,7 @@ export default {
         }*/
         playMuisc (index) {
             if(this.isPush){
-                this.setSongiList(this.list);
+                this.setSongiList(this.songList);
                 this.isPush = false;
             };
             tools.playMusic(index);

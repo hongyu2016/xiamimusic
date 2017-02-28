@@ -2,7 +2,7 @@
   <!--榜单详情列表-->
   <div class="list">
     <mu-circular-progress :size="30" v-show="loading"/>
-    <mu-list v-for="songList in list">
+    <mu-list>
 
       <mu-list-item :title="item.singername" v-for="item in songList">
         <mu-avatar :src="item.albumpic_big" slot="leftAvatar"/>
@@ -31,7 +31,7 @@ export default {
   name: 'hello',
   data () {
       return {
-          list:[],
+          songList:[],
           loading: false,
       }
   },
@@ -46,7 +46,7 @@ export default {
             const _this=this;
             this.loading = true
             this.$http.get(api.getPlayListByWhere(this.$route.params.topid,0)).then((res) => {
-                _this.list.push( res.data.showapi_res_body.pagebean.songlist);
+                _this.songList= res.data.showapi_res_body.pagebean.songlist;
                 _this.loading = false
             })
 
