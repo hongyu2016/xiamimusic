@@ -8,6 +8,8 @@
             <mu-col width="60" tablet="50" desktop="50">
                 <p class="sing-name">{{playerInfo.singName}}</p>
                 <p class="sing-singer">{{playerInfo.singerName}}</p>
+                <!--进度条-->
+                <mu-linear-progress mode="determinate" :value="100" id="small-progress" style="display: none" color="#ff4081"/>
             </mu-col>
             <mu-col width="20" tablet="20" desktop="20">
                 <div>
@@ -15,8 +17,6 @@
                     <span class="play-bar-icon icon-step-forward" @click="nextPlay"></span>
                 </div>
             </mu-col>
-            <!--进度条-->
-            <mu-linear-progress mode="determinate" :value="100" id="small-progress" style="display: none" color="#ff4081"/>
             <audio src="" id="audio"></audio>
         </mu-row>
     </div>
@@ -61,9 +61,9 @@
     }
     .play-ing-pic{display:block;width: 100%;border: solid 1px #9f9f9f;padding: 1px}
     .sing-name{width: 100%;display: block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;margin-top: 3px;margin-bottom: 5px;}
-    .sing-singer{margin-top: 5px;color: #ccc;margin-bottom: 0}
+    .sing-singer{margin-top: 5px;color: #ccc;margin-bottom: 5px}
     .play-bar-icon{font-size: 18px;line-height: 50px;}
     .icon-play,.icon-pause{margin-right: 5px;}
-    .row{position: relative;}
+    .row,.col{position: relative;}
     #small-progress{position: absolute;left: 0;bottom: 0}
 </style>
