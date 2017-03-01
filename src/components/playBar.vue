@@ -54,7 +54,8 @@
         }
     }
 </script>
-<style scoped>
+<style scoped lang="scss">
+    @import '../assets/scss/mixin/mixin.scss';  /*引入scss混合宏*/
     #play-bar{position: fixed;right: 0;bottom: 0;z-index: 10;background-color: rgba(0,0,0,.75);
         padding: 5px;width: 100%;/*height: 60px;*/display: block;
         color: #fff;box-sizing: border-box;
@@ -62,8 +63,8 @@
     .play-ing-pic{display:block;width: 100%;border: solid 1px #9f9f9f;padding: 1px}
     .sing-name{width: 100%;display: block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;margin-top: 3px;margin-bottom: 5px;}
     .sing-singer{margin-top: 5px;color: #ccc;margin-bottom: 5px}
-    .play-bar-icon{font-size: 18px;line-height: 50px;}
-    .icon-play,.icon-pause{margin-right: 5px;}
+    .play-bar-icon{@include font-dpr(20px);line-height: 50px;}
+    .icon-play,.icon-pause{margin-right: 0.35rem;}
     .row,.col{position: relative;}
     #small-progress{position: absolute;left: 0;bottom: 0}
 </style>

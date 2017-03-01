@@ -64,13 +64,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
+    @import '../assets/scss/mixin/mixin.scss';/*引入scss混合宏*/
   .gridlist-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+  @include font-dpr(14px);
   }
-
+    .mu-grid-tile>img{
+        /*height: auto;
+        width: 100%;*/
+    }
   .gridlist{
     width: 100%;
     /*height: 450px;*/

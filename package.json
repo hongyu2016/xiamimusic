@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "lib-flexible": "^0.3.2",
     "muse-ui": "^2.0.0-rc.5",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.2",
     "vue": "^2.1.10",
     "vue-axios": "^1.2.2",
     "vue-router": "^2.2.0",
+    "vue-style-loader": "^2.0.3",
     "vuex": "^2.2.1"
   },
   "devDependencies": {

@@ -1,0 +1,12 @@
+//根据不同的dpr 设定不同的文本值 使用方法为：@include font-dpr(14px);
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}

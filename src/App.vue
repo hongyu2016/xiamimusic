@@ -49,17 +49,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import 'assets/scss/mixin/mixin.scss';  /*引入scss混合宏*/
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 20px;
+  margin-top: 0.25rem;
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 40px;
+  padding-top: 1.5rem;
 }
 .my-active .mu-flat-button-label{color: #ff4081;}
 .padding-b{padding-bottom: 65px;}
