@@ -56,10 +56,10 @@
 </script>
 <style scoped>
     #play-bar{position: fixed;right: 0;bottom: 0;z-index: 10;background-color: rgba(0,0,0,.75);
-        padding: 5px;width: 100%;height: 60px;display: block;
+        padding: 5px;width: 100%;/*height: 60px;*/display: block;
         color: #fff;box-sizing: border-box;
     }
-    .play-ing-pic{width: 100%;border: solid 1px #9f9f9f;padding: 1px}
+    .play-ing-pic{display:block;width: 100%;border: solid 1px #9f9f9f;padding: 1px}
     .sing-name{width: 100%;display: block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;margin-top: 3px;margin-bottom: 5px;}
     .sing-singer{margin-top: 5px;color: #ccc;margin-bottom: 0}
     .play-bar-icon{font-size: 18px;line-height: 50px;}
