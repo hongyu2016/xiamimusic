@@ -7,15 +7,16 @@
       </div>
       <div class="search-list">
           <mu-list>
-
-              <mu-list-item :title="item.songname" v-for="(item,index) in songList" @click="playMuisc(index)">
-                  <mu-avatar :src="item.albumpic_big" slot="leftAvatar"/>
-                  <span slot="describe">
+              <template v-for="(item,index) in songList">
+                  <mu-list-item :title="item.songname" @click="playMuisc(index)">
+                      <mu-avatar :src="item.albumpic_big" slot="leftAvatar"/>
+                      <span slot="describe">
                     <span style="color: rgba(0, 0, 0, .87)">by： -</span> {{item.singername}}
                   </span>
 
-              </mu-list-item>
-              <mu-divider inset/>
+                  </mu-list-item>
+                  <mu-divider inset/>
+              </template>
 
               <mu-infinite-scroll :loading="loading" @load="loadMore"/>
               <div v-show="noMore" style="text-align: center;padding: 5px 0;width: 100%">没有更多内容了</div>
@@ -73,7 +74,10 @@ export default {
                    });
 
                    _this.loading = false;
-               })
+                   if(res.data.showapi_res_body.pagebean.contentlist.length<=0){
+                       _this.noMore=true;//没有更多内容了
+                   }
+               });
            }else{
                _this.noMore=true;//没有更多内容了
            }
