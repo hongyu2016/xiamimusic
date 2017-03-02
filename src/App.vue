@@ -79,10 +79,18 @@ export default {
   .slide-left-enter-active,.slide-left-leave-active{
     transition: transform .08s ease-in-out,opacity .1s ease-in;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
   }
 
   .slide-left-enter, .slide-left-leave-active{
     transform: translate3d(-10%, 0, 0);
+    -webkit-transform: translate3d(-10%, 0, 0);
+    -moz-transform: translate3d(-10%, 0, 0);
     opacity: 0;
   }
 </style>
