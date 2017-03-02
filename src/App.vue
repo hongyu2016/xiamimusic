@@ -65,6 +65,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   padding-top: 1.5rem;
+  position: relative;
 }
 .my-active .mu-flat-button-label{color: #ff4081;}
 .padding-b{padding-bottom: 65px;}

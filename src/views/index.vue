@@ -1,8 +1,9 @@
 <template>
   <!--首页-->
   <div class="gridlist-container">
+      <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/><!--上拉刷新-->
     <!--<loading v-show="loading"></loading>-->
-    <mu-circular-progress :size="30" v-show="loading"/>
+    <mu-circular-progress :size="30" v-show="loading"/><!--loading-->
     <mu-grid-list class="gridlist">
 
         <mu-grid-tile v-for="(item,index) in songList">
@@ -30,6 +31,8 @@ export default {
           isPush:true,
           songList:[],
           loading: false,
+          refreshing: false,
+          trigger: null  //触发下拉刷新的元素, 会给它绑定上事件
       }
   },
     created () {
@@ -37,6 +40,9 @@ export default {
     },
     mounted () {
 
+    },
+    activated(){
+        this.trigger = this.$el  //触发下拉刷新的元素, 会给它绑定上事件
     },
     methods: {
         get(){
@@ -52,8 +58,20 @@ export default {
             if(this.isPush){
                 this.setSongiList(this.songList);
                 this.isPush = false;
-            };
+            }
             tools.playMusic(index);
+        },
+        //下拉刷新
+        refresh(){
+            this.refreshing = true
+            //this.loading = true
+            const _this=this;
+
+            this.$http.get(api.getPlayListByWhere(26,0)).then(function(res){
+                _this.songList= res.data.showapi_res_body.pagebean.songlist;
+                //_this.loading = false
+                _this.refreshing = false
+            })
         },
         ...mapActions({
             setSongiList:'SONG_LIST_ACTION'
