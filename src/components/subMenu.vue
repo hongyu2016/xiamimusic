@@ -1,7 +1,7 @@
 <template>
   <!--顶部菜单-->
   <nav class="menu">
-    <div class="sub-menu">
+    <div class="sub-menu animated slideInDown">
 
       <router-link :to="{name:'index'}" tag="div" class="sub-menu-link">
         <!--<mu-flat-button label="推荐" class="menu-text"/>-->

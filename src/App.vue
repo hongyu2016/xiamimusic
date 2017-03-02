@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <subMenu></subMenu>
-    <div class="main" id="main" :class="setPadding_b">
+    <div class="main" id="main" :class="setPadding_b"><transition name="custom-classes-transition" enter-class="" enter-active-class="animated slideInLeft" leave-class="animated slideOutRight" leave-active-class=""
+    >
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
+    </transition>
     </div>
     <playBar></playBar>
     <gotoTop v-show="showTop"></gotoTop>
