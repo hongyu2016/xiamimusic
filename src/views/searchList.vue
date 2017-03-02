@@ -4,7 +4,7 @@
       <div class="search-head">
         <mu-text-field hintText="请输入歌曲或歌手" @keyup.enter="searchMusic" v-model.trim="searchTxt" class="search-input"/>
         <!--<mu-icon value="search" :size="30" color="#5d5d5d" class="search-btn" @click.stop="searchMusic"/>-->
-          <span class="icon-search search-btn"></span>
+          <span class="icon-search search-btn" @click.stop="searchMusic"></span>
       </div>
       <div class="search-list">
           <mu-list>
