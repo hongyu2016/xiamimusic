@@ -2,7 +2,9 @@
   <div id="app">
     <subMenu></subMenu>
     <div class="main" id="main" :class="setPadding_b">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <playBar></playBar>
     <gotoTop v-show="showTop"></gotoTop>

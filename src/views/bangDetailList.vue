@@ -41,6 +41,9 @@ export default {
     created () {
         this.get()
     },
+    activated(){
+        this.get()  //如果不写的话，就会读取内存只能够的。钩子的触发顺序created-> mounted-> activated，退出时触发deactivated。当再次进入（前进或者后退）时，只触发activated
+    },
     mounted () {
 
     },
