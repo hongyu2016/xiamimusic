@@ -16,8 +16,20 @@
     }
 </script>
 <style scoped>
-    #goto-top{position: fixed;right: 10px;bottom: 65px;z-index: 10;background-color: #cc8e06;
-        padding: 5px;border-radius: 50%;width: 30px;height: 30px;/*line-height: 15px;*/display: block;
-        color: #fff;box-sizing: border-box;text-align: center;
+    #goto-top{
+        position: fixed;
+        right: 10px;
+        bottom: 2.3rem;
+        z-index: 10;
+        background-color: #cc8e06;
+        border-radius: 50%;
+        width: 1rem;
+        height: 1rem;
+        display: block;
+        color: #fff;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 0.5rem;
+        line-height: 1rem;
     }
 </style>

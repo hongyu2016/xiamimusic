@@ -7,8 +7,8 @@
 
         <mu-grid-tile v-for="(item,index) in songList">
             <img :src="item.albumpic_big" @click="playMuisc(index)"/>
-            <span slot="title"  @click="playMuisc(index)">{{item.songname}}</span>
-            <span slot="subTitle"  @click="playMuisc(index)">by： <b>{{item.singername}}</b></span>
+            <span slot="title"  @click="playMuisc(index)" class="text-14">{{item.songname}}</span>
+            <span slot="subTitle"  @click="playMuisc(index)" class="text-12">by： <b>{{item.singername}}</b></span>
             <!--<mu-icon-button icon="star_border" slot="action"/>-->
         </mu-grid-tile>
 
@@ -70,11 +70,17 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-  @include font-dpr(14px);
   }
     .mu-grid-tile>img{
         /*height: auto;
         width: 100%;*/
+    }
+    .list-padding .mu-grid-tile.multiline .mu-grid-tile-titlebar{height: auto;}
+    .text-14{
+    @include font-dpr(14px);
+    }
+    .text-12{
+    @include font-dpr(12px);
     }
   .gridlist{
     width: 100%;

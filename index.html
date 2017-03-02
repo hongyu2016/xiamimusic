@@ -2,12 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1">-->
+    <meta name="flexible" content="initial-dpr=1"/> <!--因为此UI框架的原因，有些模块无法自定义宽高，所以设定所有设备使用 1倍屏，包括苹果-->
     <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script><!--在main.js中引入的时候 进行代码合并的时候会报 plugin.apply is not a function错误-->
     <title>腾讯音乐</title>
     <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
     <link rel="stylesheet" href="https://fonts.css.network/icon?family=Material+Icons">
     <link rel="stylesheet" href="static/awesome/css/font-awesome.min.css">
+   <!-- <style>
+    .mu-grid-tile.multiline .mu-grid-tile-titlebar{height:auto !important;padding-bottom: 0.2rem;padding-top: 0.2rem}
+    </style>-->
   </head>
   <body>
     <div id="app"></div>

@@ -2,8 +2,9 @@
   <!--搜索列表-->
   <div class="search-box">
       <div class="search-head">
-        <mu-text-field hintText="请输入歌曲或歌手" @keyup.enter="searchMusic" v-model.trim="searchTxt"/>
-        <mu-icon value="search" :size="30" color="#5d5d5d" class="search-btn" @click.stop="searchMusic"/>
+        <mu-text-field hintText="请输入歌曲或歌手" @keyup.enter="searchMusic" v-model.trim="searchTxt" class="search-input"/>
+        <!--<mu-icon value="search" :size="30" color="#5d5d5d" class="search-btn" @click.stop="searchMusic"/>-->
+          <span class="icon-search search-btn"></span>
       </div>
       <div class="search-list">
           <mu-list>
@@ -130,7 +131,8 @@ li {
 a {
   color: #42b983;
 }
-  .search-box{padding: 0 16px;margin-top: -10px;position: relative}
+  .search-box{padding: 0 0.3rem;position: relative}
   .search-head{position: relative}
-  .search-btn{position: absolute;right:0;top:5px}
+  .search-input{width: 85%}
+  .search-btn{position: absolute;right:0;font-size: 0.8rem;margin-top: 0.2rem;color: #868686}
 </style>

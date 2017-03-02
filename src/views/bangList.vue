@@ -4,8 +4,9 @@
       <mu-list>
         <router-link v-for="titleText in titleTexts" :to="{name:'xDetailList',params:{type:1,topid:titleText.topid}}">
 
-          <mu-list-item v-bind:title="titleText.title">
-            <mu-icon slot="right" value="arrow_right"/>
+          <mu-list-item v-bind:title="titleText.title" titleClass="list-text">
+            <!--<mu-icon slot="right" value="arrow_right"/>-->
+              <span class="right-icon icon-angle-right"></span>
           </mu-list-item>
 
         </router-link>
@@ -71,4 +72,5 @@ li {
 a {
   color: #42b983;
 }
+   .right-icon{position: absolute;right:16px;font-size: 20px;top: 14px}
 </style>
