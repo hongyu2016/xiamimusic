@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <subMenu></subMenu>
-    <div class="main" id="main" :class="setPadding_b"><transition name="custom-classes-transition" enter-class="" enter-active-class="animated slideInLeft" leave-class="animated slideOutRight" leave-active-class=""
-    >
+    <div class="main" id="main" :class="setPadding_b">
+      <transition name="slide-left">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -12,7 +12,12 @@
     <gotoTop v-show="showTop"></gotoTop>
   </div>
 </template>
-
+<!--enter-class=""
+    enter-active-class="animated slideInLeft"
+    leave-class="animated slideOutRight"
+    leave-active-class=""
+    不用animate.css了 不懂怎么控制 动画时间
+-->
 <script>
   import subMenu from 'components/subMenu.vue' //菜单按钮
   import gotoTop from 'components/gotoTop.vue' // 回到顶部
@@ -69,4 +74,15 @@ export default {
 }
 .my-active .mu-flat-button-label{color: #ff4081;}
 .padding-b{padding-bottom: 65px;}
+
+/*切换动画*/
+  .slide-left-enter-active,.slide-left-leave-active{
+    transition: transform .08s ease-in-out,opacity .1s ease-in;
+    backface-visibility: hidden;
+  }
+
+  .slide-left-enter, .slide-left-leave-active{
+    transform: translate3d(-10%, 0, 0);
+    opacity: 0;
+  }
 </style>
