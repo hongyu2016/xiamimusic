@@ -1,7 +1,7 @@
 <template>
   <!--首页-->
   <div class="gridlist-container">
-      <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/><!--上拉刷新-->
+      <!--<mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>--><!--上拉刷新-->
     <!--<loading v-show="loading"></loading>-->
     <mu-circular-progress :size="30" v-show="loading"/><!--loading-->
     <mu-grid-list class="gridlist">
@@ -31,8 +31,8 @@ export default {
           isPush:true,
           songList:[],
           loading: false,
-          refreshing: false,
-          trigger: null  //触发下拉刷新的元素, 会给它绑定上事件
+          //refreshing: false,
+          //trigger: null  //触发下拉刷新的元素, 会给它绑定上事件
       }
   },
     created () {
@@ -42,7 +42,7 @@ export default {
 
     },
     activated(){
-        this.trigger = this.$el  //触发下拉刷新的元素, 会给它绑定上事件
+        //this.trigger = this.$el  //触发下拉刷新的元素, 会给它绑定上事件
     },
     methods: {
         get(){
@@ -61,8 +61,8 @@ export default {
             }
             tools.playMusic(index);
         },
-        //下拉刷新
-        refresh(){
+        //下拉刷新--体验不好-卡 滑动的时机也不对 先去掉此功能
+       /* refresh(){
             this.refreshing = true
             //this.loading = true
             const _this=this;
@@ -72,7 +72,7 @@ export default {
                 //_this.loading = false
                 _this.refreshing = false
             })
-        },
+        },*/
         ...mapActions({
             setSongiList:'SONG_LIST_ACTION'
         })
