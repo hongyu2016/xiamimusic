@@ -50,8 +50,10 @@ export default {
             const _this=this;
 
             this.$http.get(api.getPlayListByWhere(26,0)).then(function(res){
-                _this.songList= res.data.showapi_res_body.pagebean.songlist;
-                _this.loading = false
+                if(res.data.showapi_res_code==0) {
+                    _this.songList = res.data.showapi_res_body.pagebean.songlist;
+                    _this.loading = false
+                }
             })
         },
         playMuisc (index) {

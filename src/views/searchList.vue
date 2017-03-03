@@ -2,7 +2,7 @@
   <!--搜索列表-->
   <div class="search-box">
       <div class="search-head">
-        <mu-text-field hintText="请输入歌曲或歌手" @keyup.enter="searchMusic" v-model.trim="searchTxt" class="search-input"/>
+        <mu-text-field hintText="请输入歌曲或歌手" @keyup.enter="searchMusic" v-model.trim="searchTxt" class="search-input" style="margin-bottom: 0"/>
         <!--<mu-icon value="search" :size="30" color="#5d5d5d" class="search-btn" @click.stop="searchMusic"/>-->
           <span class="icon-search search-btn" @click.stop="searchMusic"></span>
       </div>
@@ -18,9 +18,9 @@
                   </mu-list-item>
                   <mu-divider inset/>
               </template>
-
+              <div v-show="noMore" style="text-align: center;padding: 5px 0;width: 100%;font-size: 14px">{{tip}}</div>
               <mu-infinite-scroll :loading="loading" @load="loadMore"/>
-              <div v-show="noMore" style="text-align: center;padding: 5px 0;width: 100%">没有更多内容了</div>
+
           </mu-list>
       </div>
   </div>
@@ -40,7 +40,8 @@ export default {
         isPush:true,
         allPages:0,
         nowPages:1,
-        noMore:false
+        noMore:false,
+        tip:''
     }
   },
     computed:{
@@ -56,9 +57,18 @@ export default {
             this.isPush = true;
 
             this.$http.get(api.search(this.searchTxt,this.nowPages)).then(function(res){
-                _this.songList= res.data.showapi_res_body.pagebean.contentlist;
-                _this.allPages = res.data.showapi_res_body.pagebean.allPages;
-                _this.loading = false
+                if(res.data.showapi_res_code==0) {
+                    _this.songList = res.data.showapi_res_body.pagebean.contentlist;
+                    _this.allPages = res.data.showapi_res_body.pagebean.allPages;
+                    _this.loading = false
+                }
+                else{
+                    _this.tip=res.data.showapi_res_error;
+                }
+                if(res.data.showapi_res_body.pagebean.contentlist.length<=0){
+                    _this.noMore=true;//没有更多内容了
+                    _this.tip='没有更多内容了'
+                }
             })
         },
         getLoadMore(){
@@ -66,21 +76,28 @@ export default {
            const _this=this;
            if(this.nowPages < this.allPages + 1){
                this.loading = true;
+               this.noMore=false;
                this.nowPages++;
                this.$http.get(api.search(this.searchTxt,this.nowPages)).then(function(res){
-                   _this.isPush = true;
-                   //循环大数组
-                   res.data.showapi_res_body.pagebean.contentlist.forEach((value)=>{
-                       _this.songList.push(value);
-                   });
-
-                   _this.loading = false;
+                   if(res.data.showapi_res_code==0) {
+                       _this.isPush = true;
+                       //循环大数组
+                       res.data.showapi_res_body.pagebean.contentlist.forEach((value) => {
+                           _this.songList.push(value);
+                       });
+                       _this.loading = false;
+                   }else{
+                       _this.noMore=true;
+                       _this.tip=res.data.showapi_res_error;
+                   }
                    if(res.data.showapi_res_body.pagebean.contentlist.length<=0){
                        _this.noMore=true;//没有更多内容了
+                       _this.tip='没有更多内容了'
                    }
                });
            }else{
                _this.noMore=true;//没有更多内容了
+               _this.tip='没有更多内容了'
            }
         },
         searchMusic(){

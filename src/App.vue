@@ -44,7 +44,6 @@ export default {
     },
     watch:{
         //路由切换时进行判断
-
         '$route'(to,from){
             if(to.name=='index'){
                 console.log(this.$route.meta.keepAlive)
@@ -86,7 +85,7 @@ export default {
   position: relative;
 }
 .my-active .mu-flat-button-label{color: #ff4081;}
-.padding-b{padding-bottom: 65px;}
+.padding-b{padding-bottom: 2.4rem;}
 
 /*切换动画*/
   .slide-left-enter-active,.slide-left-leave-active{
