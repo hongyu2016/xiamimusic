@@ -17,8 +17,8 @@ Vue.use(MuseUI);
 Vue.use(VueAxios,axios);
 Vue.use(VueLazyload, {
     preLoad: 1,
-    // error: './assets/error.png',
-    // loading: './assets/loading.gif',
+     error: '../static/images/error.png',
+     loading: '../static/images/loading.gif',
     attempt: 1
 });
 /* eslint-disable no-new */
