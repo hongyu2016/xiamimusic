@@ -20,13 +20,15 @@ export default new Router({
     {
         path: '/index',
         name: 'index',
-        component: index
+        component: index,
+        meta: { keepAlive: true }
     },
       //榜单分类列表
     {
         path: '/bangList',
         name: 'bangList',
-        component: bangList
+        component: bangList,
+        meta: { keepAlive: true }
     },
       //阿里榜单分类列表
      /* {
@@ -38,7 +40,7 @@ export default new Router({
       {
           path: '/bangList/topid/:topid',
           name: 'xDetailList',
-          component: bangDetailList
+          component: bangDetailList,
       },
       //阿里榜单歌曲列表
       /*{
@@ -49,11 +51,13 @@ export default new Router({
     {
         path: '/searchList',
         name: 'searchList',
-        component: searchList
+        component: searchList,
+        meta: { keepAlive: true }
     },
     {
         path:'*',
-        redirect:'/index'
+        redirect:'/index',
+        meta: { keepAlive: true }
     }
   ]
 })

@@ -3,10 +3,13 @@
     <subMenu></subMenu>
     <div class="main" id="main" :class="setPadding_b">
       <transition name="slide-left">
-      <!--<keep-alive>-->
-        <router-view></router-view>
-      <!--</keep-alive>-->
-    </transition>
+        <keep-alive>
+          <router-view v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+      </transition>
+      <transition name="slide-left">
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
+      </transition>
     </div>
     <playBar></playBar>
     <gotoTop v-show="showTop"></gotoTop>
@@ -39,6 +42,15 @@ export default {
             return this.isDisplay?'padding-b':'no-padding-b';
         }
     },
+    watch:{
+        //路由切换时进行判断
+
+        '$route'(to,from){
+            if(to.name=='index'){
+                console.log(this.$route.meta.keepAlive)
+            }
+        }
+    },
     methods:{
         needToTop(){
             let curHeight = document.documentElement.scrollTop || document.body.scrollTop;  //滚动高度
@@ -49,7 +61,8 @@ export default {
             else {
                 this.showTop = false;
             }
-        }
+        },
+
     },
     mounted(){
         window.addEventListener('scroll', this.needToTop);  //滚动事件监听
