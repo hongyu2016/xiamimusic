@@ -7,7 +7,7 @@
     <mu-grid-list class="gridlist">
 
         <mu-grid-tile v-for="(item,index) in songList">
-            <img  @click="playMuisc(index)" v-lazy="item.albumpic_big"/>
+            <img  @click="playMuisc(index)" v-lazy="item.albumpic_big" class="img-load"/>
             <span slot="title"  @click="playMuisc(index)" class="text-14">{{item.songname}}</span>
             <span slot="subTitle"  @click="playMuisc(index)" class="text-12">by： <b>{{item.singername}}</b></span>
             <!--<mu-icon-button icon="star_border" slot="action"/>-->
@@ -107,4 +107,37 @@ export default {
     overflow-y: auto;
     align-content: flex-start; /*换行后 垂直排列方式*/
   }
+    .img-load[lazy=loaded] {
+        background-size: cover;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+    }
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-moz-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 </style>

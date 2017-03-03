@@ -18,7 +18,7 @@ Vue.use(VueAxios,axios);
 Vue.use(VueLazyload, {
     preLoad: 1,
      error: '../static/images/error.png',
-     loading: '../static/images/loading.gif',
+     //loading: '../static/images/loading.gif',
     attempt: 1
 });
 /* eslint-disable no-new */
