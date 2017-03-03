@@ -8,7 +8,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
-import animate from 'animate.css'  //animate.css
+//import animate from 'animate.css'  //animate.css
 
 Vue.prototype.$http = axios; // 类似于vue-resource的调用方法，之后可以在实例里直接用this.$http.get()等
 

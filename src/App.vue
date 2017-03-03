@@ -3,9 +3,9 @@
     <subMenu></subMenu>
     <div class="main" id="main" :class="setPadding_b">
       <transition name="slide-left">
-      <keep-alive>
+      <!--<keep-alive>-->
         <router-view></router-view>
-      </keep-alive>
+      <!--</keep-alive>-->
     </transition>
     </div>
     <playBar></playBar>
