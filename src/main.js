@@ -8,13 +8,19 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+import VueLazyload from 'vue-lazyload'
 //import animate from 'animate.css'  //animate.css
 
 Vue.prototype.$http = axios; // 类似于vue-resource的调用方法，之后可以在实例里直接用this.$http.get()等
 
 Vue.use(MuseUI);
 Vue.use(VueAxios,axios);
-
+Vue.use(VueLazyload, {
+    preLoad: 1,
+    // error: './assets/error.png',
+    // loading: './assets/loading.gif',
+    attempt: 1
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

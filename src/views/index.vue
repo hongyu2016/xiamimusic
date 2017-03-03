@@ -7,7 +7,7 @@
     <mu-grid-list class="gridlist">
 
         <mu-grid-tile v-for="(item,index) in songList">
-            <img :src="item.albumpic_big" @click="playMuisc(index)"/>
+            <img  @click="playMuisc(index)" v-lazy="item.albumpic_big"/>
             <span slot="title"  @click="playMuisc(index)" class="text-14">{{item.songname}}</span>
             <span slot="subTitle"  @click="playMuisc(index)" class="text-12">by： <b>{{item.singername}}</b></span>
             <!--<mu-icon-button icon="star_border" slot="action"/>-->
@@ -78,8 +78,7 @@ export default {
         ...mapActions({
             setSongiList:'SONG_LIST_ACTION'
         })
-    },
-    /*components:{loading}*/
+    }
 }
 </script>
 
