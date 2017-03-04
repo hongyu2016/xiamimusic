@@ -109,12 +109,12 @@ export default {
   }
     .img-load[lazy=loaded] {
         background-size: cover;
-        -webkit-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
+        -webkit-animation:fadeIn 0.5s both;
+        -moz-animation:fadeIn 0.5s both;
+        -o-animation:fadeIn 0.5s both;
+        animation:fadeIn 0.5s both;
+        -ms-animation:fadeIn 0.5s both;
+
     }
     @-webkit-keyframes fadeIn {
         from {
@@ -125,6 +125,22 @@ export default {
         }
     }
     @-moz-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-ms-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-o-keyframes fadeIn {
         from {
             opacity: 0;
         }

@@ -16,10 +16,10 @@ Vue.prototype.$http = axios; // 类似于vue-resource的调用方法，之后可
 Vue.use(MuseUI);
 Vue.use(VueAxios,axios);
 Vue.use(VueLazyload, {
-    preLoad: 1,
+    preLoad: 2,
      error: '../static/images/error.png',
      //loading: '../static/images/loading.gif',
-    attempt: 1
+    attempt: 2
 });
 /* eslint-disable no-new */
 new Vue({
